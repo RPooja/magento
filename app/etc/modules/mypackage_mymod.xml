@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <modules>
+        <Mypackage_Mymod>
+            <active>true</active>
+            <codePool>community</codePool>
+        </Mypackage_Mymod.xml>
+    </modules>
+</config>
