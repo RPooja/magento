@@ -103,8 +103,9 @@ endif;
     </div>
     </div>
     <div style="margin:0">
-        <p style="padding-right:10px;"><?php echo $this->__("<font color='red'>*</font> Required Fields") ?></p>        
-        <div style="padding-right:10px;"><button type="submit" title="<?php echo $this->__('Submit') ?>" ><span><?php echo $this->__('Submit') ?></span></button></div>
+        <p style="padding-right:10px;">
+      <?php echo Mage::helper('test')->__('* Required Fields') ?></p>        
+        <div style="padding-right:10px;"><button type="submit" title="<?php echo Mage::helper('test')->__('Submit') ?>" ><span><?php echo Mage::helper('contacts')->__('Submit') ?></span></button></div>
     </div>
     <input type="hidden" name="request_flag" value="1"/>
 </form>
