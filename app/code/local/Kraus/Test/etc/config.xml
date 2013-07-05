@@ -34,11 +34,11 @@
 				<resourceModel>test_mysql4</resourceModel>		
             </test>
             <test_mysql4>
-                <class>kraus_test_Model_Mysql4</class>
+                <class>Kraus_Test_Model_Mysql4</class>
                 <entities>
-                    <contacts>
+                    <test>
                         <table>regis_form</table>
-                    </contacts>
+                    </test>
                 </entities>                
             </test_mysql4>
         </models>

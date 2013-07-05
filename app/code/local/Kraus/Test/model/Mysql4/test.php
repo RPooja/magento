@@ -1,6 +1,6 @@
 <?php
 
-class kraus_test_Model_Mysql4_Contacts extends Mage_Core_Model_Mysql4_Abstract
+class kraus_Test_Model_Mysql4_Contacts extends Mage_Core_Model_Mysql4_Abstract
 {
     protected function _construct()
     {
