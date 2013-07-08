@@ -27,7 +27,7 @@
    <global>
       <models>
          <test>
-            <class>kraus_test_Model</class>
+            <class>Kraus_Test_Model</class>
             <resourceModel>test_mysql4</resourceModel>	
            </test>
             <test_mysql4>
@@ -42,7 +42,7 @@
         <resources>
             <test_setup>
                 <setup>
-                    <module>kraus_test</module>
+                    <module>Kraus_Test</module>
                 </setup>
             </test_setup>
 <test_read>
@@ -56,17 +56,7 @@
                     <use>core_write</use>
                 </connection>
             </test_write>
-        </resources>
-        <template>
-            <email>
-                <test_email_email_template translate="label" module="test">
-                    <label>Registration Form</label>
-                    <file>register_form.html</file>
-                    <type>text</type>
-                </test_email_email_template>
-            </email>
-        </template>
-  
+        </resources>  
   
     <helpers>
       <test>
