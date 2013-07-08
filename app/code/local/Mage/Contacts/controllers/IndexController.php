@@ -1,11 +1,12 @@
 <?php
 
-class Kraus_Test_IndexController extends Mage_Core_Controller_Front_Action
+class Mage_Contacts_IndexController extends Mage_Core_Controller_Front_Action
 {
-    const XML_PATH_EMAIL_RECIPIENT  = 'test/email/recipient_email';
-    const XML_PATH_EMAIL_SENDER     = 'test/email/sender_email_identity';
-    const XML_PATH_EMAIL_TEMPLATE   = 'test/email/email_template';
-    const XML_PATH_ENABLED          = 'test/test/enabled';
+
+    const XML_PATH_EMAIL_RECIPIENT  = 'contacts/email/recipient_email';
+    const XML_PATH_EMAIL_SENDER     = 'contacts/email/sender_email_identity';
+    const XML_PATH_EMAIL_TEMPLATE   = 'contacts/email/email_template';
+    const XML_PATH_ENABLED          = 'contacts/contacts/enabled';
 
     public function preDispatch()
     {
@@ -18,22 +19,13 @@ class Kraus_Test_IndexController extends Mage_Core_Controller_Front_Action
 
     public function indexAction()
     {
+		$this->loadLayout();
+        $this->getLayout()->getBlock('contactForm')
+            ->setFormAction( Mage::getUrl('*/*/post') );
 
-	  $this->loadLayout();   
-	  $this->getLayout()->getBlock("head")->setTitle($this->__("Page title"));
-	        $breadcrumbs = $this->getLayout()->getBlock("breadcrumbs");
-      $breadcrumbs->addCrumb("home", array(
-                "label" => $this->__("Home Page"),
-                "title" => $this->__("Home Page"),
-                "link"  => Mage::getBaseUrl()
-		   ));
-
-      $breadcrumbs->addCrumb("Registration form", array(
-                "label" => $this->__("Registration form"),
-                "title" => $this->__("Registration form")
-		   ));
-
-      $this->renderLayout(); 
+        $this->_initLayoutMessages('customer/session');
+        $this->_initLayoutMessages('catalog/session');
+        $this->renderLayout();
     }
 
     public function postAction()
@@ -76,7 +68,7 @@ class Kraus_Test_IndexController extends Mage_Core_Controller_Front_Action
 				}
 				
 				
-				$model = Mage::getModel('test/test');
+				$model = Mage::getModel('contacts/contacts');
 				$model->setGuestName(trim($post['name']));
 				$model->setGuestEmail(trim($post['email']));
 				$model->setGuestTelephone($tele);
@@ -101,7 +93,7 @@ class Kraus_Test_IndexController extends Mage_Core_Controller_Front_Action
 				}
 
 				$translate->setTranslateInline(true);	
-				Mage::getSingleton('customer/session')->addSuccess(Mage::helper('test')->__('Your enquiry was submitted and will be responded to as soon as possible. Thank you for contacting us.'));
+				Mage::getSingleton('customer/session')->addSuccess(Mage::helper('contacts')->__('Your inquiry was submitted and will be responded to as soon as possible. Thank you for contacting us.'));
 				$this->_redirect('*/*/');
 
 				return;
@@ -109,7 +101,7 @@ class Kraus_Test_IndexController extends Mage_Core_Controller_Front_Action
             } catch (Exception $e) {
                 $translate->setTranslateInline(true);
 
-                Mage::getSingleton('customer/session')->addError(Mage::helper('test')->__('Unable to submit your request. Please, try again later'));
+                Mage::getSingleton('customer/session')->addError(Mage::helper('contacts')->__('Unable to submit your request. Please, try again later'));
                 $this->_redirect('*/*/');
                 return;
             }

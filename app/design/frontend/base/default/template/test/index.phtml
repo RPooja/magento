@@ -10,6 +10,7 @@ if(isset($_POST) && !empty($_POST['request_flag'])):
      
     if(!empty($params)):
     $message = "
+<<<<<<< HEAD
 <html>
 <head>
 <title>Registration form</title>
@@ -40,6 +41,38 @@ if(isset($_POST) && !empty($_POST['request_flag'])):
 </body>
 </html>";
     endif;
+=======
+    <html>
+    <head>
+      <title>Customer details</title>
+    </head>
+        <body>
+        <table border='0' cellpadding='4' cellspacing='0' width='90%'>
+        <tbody>
+        <tr>
+          <td align='center' colspan='2' height='30' >Registration form</td>       
+        </tr>    
+        <tr>
+          <td align='right' width='40%'><b>Name:</b></td>
+          <td width='55%'>".$params['name']."</td>
+        </tr>
+        <tr>
+          <td align='right' width='40%'><b>Email Address:</b></td>  
+          <td width='55%'>".$params['email']."</td>
+        </tr>
+        <tr>
+          <td align='right' width='40%'><b>Phone Number:</b></td>
+          <td width='55%'>".$params['phone']."</td>
+        </tr>     
+        <tr>
+          <td align='right' width='40%'><b>Comments:</b></td>
+          <td width='55%'>".$params['comment']."</td>
+        </tr>
+        </tbody>  
+        </body>
+    </html>"; 
+    endif;  
+>>>>>>> dc0f0e0a66e518f237c0a317b400f317caf1661a
      
     $to = Mage::getStoreConfig('contacts/email/recipient_email'); //get email address set from site admin
      
@@ -67,13 +100,32 @@ endif;
 ?>
 <div align="left">
 <div>
+<<<<<<< HEAD
 <form action="<?php echo $url ?>" id="requestForm" method="post">
+=======
+<form action="<?php echo $this->getFormAction(); ?>" id="requestFrm" method="post">
+>>>>>>> dc0f0e0a66e518f237c0a317b400f317caf1661a
     <div>
     <div>
+   <!--  <?php 
+      $model =Mage::getModel('test/test');
+      
+      //$model->setName("s")->save();
+      $collection=$model->getCollection();   
+      foreach ($collection as $obj ) {
+      print_r($obj->getData());
+      }
+?>-->
         <div>
+<<<<<<< HEAD
         <h1 class="txt-blue" align="center"><?php echo Mage::helper('contacts')->__('Registration Form') ?></h1>
         </div>
         <ul class="form-list">
+=======
+        <h1 class="txt-blue" align="center"><?php echo Mage::helper('test')->__('Registration Form') ?></h1>
+        </div>        
+        <ul class="form-list">                      
+>>>>>>> dc0f0e0a66e518f237c0a317b400f317caf1661a
             <li>
                 <label class="required"><?php echo $this->__('Name') ?>&nbsp;<font color="red">*</font></label>
                 <div class="input-box">
