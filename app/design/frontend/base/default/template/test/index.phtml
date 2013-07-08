@@ -12,13 +12,13 @@ if(isset($_POST) && !empty($_POST['request_flag'])):
     $message = "
     <html>
     <head>
-      <title>Registration form</title>
+      <title>Customer details</title>
     </head>
         <body>
         <table border='0' cellpadding='4' cellspacing='0' width='90%'>
         <tbody>
         <tr>
-          <td align='center' colspan='2' height='30' >Customer Details</td>       
+          <td align='center' colspan='2' height='30' >Registration form</td>       
         </tr>    
         <tr>
           <td align='right' width='40%'><b>Name:</b></td>
@@ -68,11 +68,20 @@ endif;
 
 <div align="left">
 <div>
-<form action="<?php echo $url ?>" id="requestFrm" method="post">
+<form action="<?php echo $this->getFormAction(); ?>" id="requestFrm" method="post">
     <div>
     <div>
+   <!--  <?php 
+      $model =Mage::getModel('test/test');
+      
+      //$model->setName("s")->save();
+      $collection=$model->getCollection();   
+      foreach ($collection as $obj ) {
+      print_r($obj->getData());
+      }
+?>-->
         <div>
-        <h1 class="txt-blue" align="center"><?php echo Mage::helper('contacts')->__('Registration Form') ?></h1>
+        <h1 class="txt-blue" align="center"><?php echo Mage::helper('test')->__('Registration Form') ?></h1>
         </div>        
         <ul class="form-list">                      
             <li>

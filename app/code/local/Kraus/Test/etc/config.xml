@@ -1,16 +1,16 @@
 <?xml version="1.0"?>
 <config>
-  <modules>
+  <Tests>
     <Kraus_Test>
       <version>0.1.0</version>
     </Kraus_Test>
-  </modules>
+  </Tests>
   <frontend>
     <routers>
       <test>
         <use>standard</use>
           <args>
-            <module>Kraus_Test</module>
+            <Test>Kraus_Test</Test>
             <frontName>test</frontName>
           </args>
       </test>
@@ -23,12 +23,63 @@
 		  </updates>
 		</layout>
   </frontend>
-  <global>
+  
+  
+  <admin>
+        <routers>
+            <Test>
+                <use>admin</use>
+                <args>
+                    <Test>Kraus_Test</Test>
+                    <frontName>Test</frontName>
+                </args>
+            </Test>
+        </routers>
+    </admin>
+    <adminhtml>
+        <menu>
+            <Test Test="Test">
+                <title>Test</title>
+                <sort_order>71</sort_order>               
+                <children>
+                    <items Test="Test">
+                        <title>Manage Items</title>
+                        <sort_order>0</sort_order>
+                        <action>Test/adminhtml_Test</action>
+                    </items>
+                </children>
+            </Test>
+        </menu>
+        <acl>
+            <resources>
+                <all>
+                    <title>Allow Everything</title>
+                </all>
+                <admin>
+                    <children>
+                        <Test>
+                            <title>Test Test</title>
+                            <sort_order>200</sort_order>
+                        </Test>
+                    </children>
+                </admin>
+            </resources>   
+        </acl>
+        <layout>
+            <updates>
+                <Test>
+                    <file>Test.xml</file>
+                </Test>
+            </updates>
+        </layout>
+    </adminhtml>   
   
   
   
   
-  <models>
+  
+      <global>
+          <models>
             <test>
 				<class>kraus_test_Model</class>
 				<resourceModel>test_mysql4</resourceModel>		
@@ -45,7 +96,7 @@
         <resources>
             <test_setup>
                 <setup>
-                    <module>kraus_test</module>
+                    <Test>Kraus_Test</Test>
                 </setup>
             </test_setup>
 			<test_read>
@@ -60,22 +111,6 @@
                 </connection>
             </test_write>  
         </resources>
-        <template>
-            <email>
-                <test_email_email_template translate="label" module="test">
-                    <label>Registration Form</label>
-                    <file>register_form.html</file>
-                    <type>text</type>
-                </test_email_email_template>
-            </email>
-        </template>
-  
-  
-  
-  
-  
-  
-  
     <helpers>
       <test>
         <class>Kraus_Test_Helper</class>
@@ -87,6 +122,18 @@
 	  </test>
 	</blocks>
   </global>
+  
+  
+  <default>
+        <test>
+            <test>
+                <enabled>1</enabled>
+            </test>
+            <email>
+                <recipient_email><!CDATAhello@example.com></recipient_email>
+                <sender_email_identity>custom2</sender_email_identity>
+                <email_template>test_email_email_template</email_template>
+            </email>
+        </test>
+    </default>
 </config> 
-
-
