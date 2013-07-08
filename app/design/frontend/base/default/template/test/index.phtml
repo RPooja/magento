@@ -1,51 +1,51 @@
 <?php
-$url = Mage::getBaseUrl().'requestfrm'; 
+$url = Mage::getBaseUrl().'requestfrm';
 //below code for sending mail after form is submitted
-//start 
+//start
 if(isset($_POST) && !empty($_POST['request_flag'])):
-    $params = $this->getRequest()->getParams();       //Fetch submited params       
-    //print_r($params);                 
+    $params = $this->getRequest()->getParams(); //Fetch submited params
+    //print_r($params);
     // message start
-    $message = '';  
+    $message = '';
      
     if(!empty($params)):
     $message = "
-    <html>
-    <head>
-      <title>Registration form</title>
-    </head>
-        <body>
-        <table border='0' cellpadding='4' cellspacing='0' width='90%'>
-        <tbody>
-        <tr>
-          <td align='center' colspan='2' height='30' >Customer Details</td>       
-        </tr>    
-        <tr>
-          <td align='right' width='40%'><b>Name:</b></td>
-          <td width='55%'>".$params['name']."</td>
-        </tr>
-        <tr>
-          <td align='right' width='40%'><b>Email Address:</b></td>  
-          <td width='55%'>".$params['email']."</td>
-        </tr>
-        <tr>
-          <td align='right' width='40%'><b>Phone Number:</b></td>
-          <td width='55%'>".$params['phone']."</td>
-        </tr>     
-        <tr>
-          <td align='right' width='40%'><b>Comments:</b></td>
-          <td width='55%'>".$params['comment']."</td>
-        </tr>
-        </tbody>  
-        </body>
-    </html>"; 
-    endif;  
+<html>
+<head>
+<title>Registration form</title>
+</head>
+<body>
+<table border='0' cellpadding='4' cellspacing='0' width='90%'>
+<tbody>
+<tr>
+<td align='center' colspan='2' height='30' >Customer Details</td>
+</tr>
+<tr>
+<td align='right' width='40%'><b>Name:</b></td>
+<td width='55%'>".$params['name']."</td>
+</tr>
+<tr>
+<td align='right' width='40%'><b>Email Address:</b></td>
+<td width='55%'>".$params['email']."</td>
+</tr>
+<tr>
+<td align='right' width='40%'><b>Phone Number:</b></td>
+<td width='55%'>".$params['phone']."</td>
+</tr>
+<tr>
+<td align='right' width='40%'><b>Comments:</b></td>
+<td width='55%'>".$params['comment']."</td>
+</tr>
+</tbody>
+</body>
+</html>";
+    endif;
      
     $to = Mage::getStoreConfig('contacts/email/recipient_email'); //get email address set from site admin
      
-    $dt = date('d-m-Y');    
-    // subject  
-    $subject = "Customer details submitted on date $dt";    
+    $dt = date('d-m-Y');
+    // subject
+    $subject = "Customer details submitted on date $dt";
     // message end
     $mail = new Zend_Mail();
     $mail->setBodyHtml($message);
@@ -55,55 +55,54 @@ if(isset($_POST) && !empty($_POST['request_flag'])):
     try {
       if($mail->send())
       {
-        Mage::getSingleton('core/session')->addSuccess('Mail sent successfully. We will contact you shortly');           
-      } 
-    }        
+        Mage::getSingleton('core/session')->addSuccess('Mail sent successfully. We will contact you shortly');
+      }
+    }
     catch(Exception $ex) {
-        Mage::getSingleton('core/session')->addError('Unable to send email.');        
-    }  
+        Mage::getSingleton('core/session')->addError('Unable to send email.');
+    }
      
 endif;
 //end
 ?>
-
 <div align="left">
 <div>
-<form action="<?php echo $url ?>" id="requestFrm" method="post">
+<form action="<?php echo $url ?>" id="requestForm" method="post">
     <div>
     <div>
         <div>
         <h1 class="txt-blue" align="center"><?php echo Mage::helper('contacts')->__('Registration Form') ?></h1>
-        </div>        
-        <ul class="form-list">                      
+        </div>
+        <ul class="form-list">
             <li>
                 <label class="required"><?php echo $this->__('Name') ?>&nbsp;<font color="red">*</font></label>
-                <div class="input-box">                       
-                    <input name="name" id="name" title="name" value="" class="small required-entry" type="text" />                    
+                <div class="input-box">
+                    <input name="name" id="name" title="name" value="" class="small required-entry" type="text" />
                 </div>
-            </li>                    
+            </li>
             <li>
                 <label class="required"><?php echo $this->__('Email Address') ?>&nbsp;<font color="red">*</font></label>
-                <div class="input-box">                       
-                    <input name="email" id="email" title="email" value="" class="small required-entry validate-email" type="text" />                    
+                <div class="input-box">
+                    <input name="email" id="email" title="email" value="" class="small required-entry validate-email" type="text" />
                 </div>
             </li>
           <li>
                 <label><?php echo $this->__('Phone Number') ?></label>
-                <div class="input-box">                       
-                    <input name="phone" id="phone" title="phone" value="" type="text" />                    
+                <div class="input-box">
+                    <input name="phone" id="phone" title="phone" value="" type="text" />
                 </div>
-            </li>    
+            </li>
             <li>
                 <label for="comment"><?php echo $this->__('Address') ?></label>
                 <div class="input-box">
                     <textarea name="comment" id="comment" title="" cols="5" rows="3"></textarea>
                 </div>
             </li>
-        </ul>      
+        </ul>
     </div>
     </div>
     <div style="margin:0">
-        <p style="padding-right:10px;"><?php echo $this->__("<font color='red'>*</font> Required Fields") ?></p>        
+        <p style="padding-right:10px;"><?php echo $this->__("<font color='red'>*</font> Required Fields") ?></p>
         <div style="padding-right:10px;"><button type="submit" title="<?php echo $this->__('Submit') ?>" ><span><?php echo $this->__('Submit') ?></span></button>
         <input type="reset" value="Reset" title="<?php echo $this->__('Reset') ?>" /></div>
     </div>
