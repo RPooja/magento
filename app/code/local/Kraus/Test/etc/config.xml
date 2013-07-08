@@ -6,6 +6,7 @@
     </Kraus_Test>
   </modules>
   <frontend>
+  
     <routers>
       <test>
         <use>standard</use>
@@ -23,7 +24,50 @@
 		  </updates>
 		</layout>
   </frontend>
-  <global>
+   <global>
+      <models>
+         <test>
+            <class>kraus_test_Model</class>
+            <resourceModel>test_mysql4</resourceModel>	
+           </test>
+            <test_mysql4>
+                <class>Kraus_Test_Model_Mysql4</class>
+                <entities>
+                    <test>
+                        <table>regis_form</table>
+                    </test>
+                </entities>
+            </test_mysql4>
+        </models>
+        <resources>
+            <test_setup>
+                <setup>
+                    <module>kraus_test</module>
+                </setup>
+            </test_setup>
+<test_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </test_read>
+            
+            <test_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </test_write>
+        </resources>
+        <template>
+            <email>
+                <test_email_email_template translate="label" module="test">
+                    <label>Registration Form</label>
+                    <file>register_form.html</file>
+                    <type>text</type>
+                </test_email_email_template>
+            </email>
+        </template>
+  
+  
     <helpers>
       <test>
         <class>Kraus_Test_Helper</class>

@@ -1,4 +1,5 @@
 <?php
+
 class Kraus_Test_IndexController extends Mage_Core_Controller_Front_Action{
     public function IndexAction() {
       
@@ -19,4 +20,9 @@ class Kraus_Test_IndexController extends Mage_Core_Controller_Front_Action{
       $this->renderLayout(); 
 	  
     }
+	
+	public function postAction() {
+	
+	die("We are at post action");
+	}
 }
