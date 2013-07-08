@@ -1,4 +1,5 @@
-<?php
+ <?php
+ 
 $url = Mage::getBaseUrl().'requestfrm';
 //below code for sending mail after form is submitted
 //start
@@ -10,10 +11,9 @@ if(isset($_POST) && !empty($_POST['request_flag'])):
      
     if(!empty($params)):
     $message = "
-<<<<<<< HEAD
 <html>
 <head>
-<title>Registration form</title>
+<title>Customer details</title>
 </head>
 <body>
 <table border='0' cellpadding='4' cellspacing='0' width='90%'>
@@ -41,38 +41,6 @@ if(isset($_POST) && !empty($_POST['request_flag'])):
 </body>
 </html>";
     endif;
-=======
-    <html>
-    <head>
-      <title>Customer details</title>
-    </head>
-        <body>
-        <table border='0' cellpadding='4' cellspacing='0' width='90%'>
-        <tbody>
-        <tr>
-          <td align='center' colspan='2' height='30' >Registration form</td>       
-        </tr>    
-        <tr>
-          <td align='right' width='40%'><b>Name:</b></td>
-          <td width='55%'>".$params['name']."</td>
-        </tr>
-        <tr>
-          <td align='right' width='40%'><b>Email Address:</b></td>  
-          <td width='55%'>".$params['email']."</td>
-        </tr>
-        <tr>
-          <td align='right' width='40%'><b>Phone Number:</b></td>
-          <td width='55%'>".$params['phone']."</td>
-        </tr>     
-        <tr>
-          <td align='right' width='40%'><b>Comments:</b></td>
-          <td width='55%'>".$params['comment']."</td>
-        </tr>
-        </tbody>  
-        </body>
-    </html>"; 
-    endif;  
->>>>>>> dc0f0e0a66e518f237c0a317b400f317caf1661a
      
     $to = Mage::getStoreConfig('contacts/email/recipient_email'); //get email address set from site admin
      
@@ -100,32 +68,13 @@ endif;
 ?>
 <div align="left">
 <div>
-<<<<<<< HEAD
 <form action="<?php echo $url ?>" id="requestForm" method="post">
-=======
-<form action="<?php echo $this->getFormAction(); ?>" id="requestFrm" method="post">
->>>>>>> dc0f0e0a66e518f237c0a317b400f317caf1661a
     <div>
     <div>
-   <!--  <?php 
-      $model =Mage::getModel('test/test');
-      
-      //$model->setName("s")->save();
-      $collection=$model->getCollection();   
-      foreach ($collection as $obj ) {
-      print_r($obj->getData());
-      }
-?>-->
         <div>
-<<<<<<< HEAD
-        <h1 class="txt-blue" align="center"><?php echo Mage::helper('contacts')->__('Registration Form') ?></h1>
+        <h3 class="txt-blue"><?php echo Mage::helper('contacts')->__('Information') ?></h3>
         </div>
         <ul class="form-list">
-=======
-        <h1 class="txt-blue" align="center"><?php echo Mage::helper('test')->__('Registration Form') ?></h1>
-        </div>        
-        <ul class="form-list">                      
->>>>>>> dc0f0e0a66e518f237c0a317b400f317caf1661a
             <li>
                 <label class="required"><?php echo $this->__('Name') ?>&nbsp;<font color="red">*</font></label>
                 <div class="input-box">
@@ -138,14 +87,14 @@ endif;
                     <input name="email" id="email" title="email" value="" class="small required-entry validate-email" type="text" />
                 </div>
             </li>
-          <li>
+            <li>
                 <label><?php echo $this->__('Phone Number') ?></label>
                 <div class="input-box">
                     <input name="phone" id="phone" title="phone" value="" type="text" />
                 </div>
             </li>
             <li>
-                <label for="comment"><?php echo $this->__('Address') ?></label>
+                <label for="comment"><?php echo $this->__('Comment') ?></label>
                 <div class="input-box">
                     <textarea name="comment" id="comment" title="" cols="5" rows="3"></textarea>
                 </div>
@@ -154,9 +103,9 @@ endif;
     </div>
     </div>
     <div style="margin:0">
-        <p style="padding-right:10px;"><?php echo $this->__("<font color='red'>*</font> Required Fields") ?></p>
-        <div style="padding-right:10px;"><button type="submit" title="<?php echo $this->__('Submit') ?>" ><span><?php echo $this->__('Submit') ?></span></button>
-        <input type="reset" value="Reset" title="<?php echo $this->__('Reset') ?>" /></div>
+        <p style="padding-right:10px;">
+      <?php echo Mage::helper('test')->__('* Required Fields') ?></p>
+        <div style="padding-right:10px;"><button type="submit" title="<?php echo Mage::helper('test')->__('Submit') ?>" ><span><?php echo Mage::helper('contacts')->__('Submit') ?></span></button></div>
     </div>
     <input type="hidden" name="request_flag" value="1"/>
 </form>
