@@ -1,35 +1,44 @@
 <?xml version="1.0"?>
 <config>
-  <modules>
-    <Kraus_Test>
-      <version>0.1.0</version>
-    </Kraus_Test>
-  </modules>
-  <frontend>
-  
-    <routers>
-      <test>
-        <use>standard</use>
-          <args>
-            <module>Kraus_Test</module>
-            <frontName>test</frontName>
-          </args>
-      </test>
-    </routers>
-		<layout>
-		  <updates>
-			<test>
-			  <file>test.xml</file>
-			</test>
-		  </updates>
-		</layout>
-  </frontend>
-   <global>
-      <models>
-         <test>
-            <class>Kraus_Test_Model</class>
-            <resourceModel>test_mysql4</resourceModel>	
-           </test>
+    <modules>
+        <Kraus_Test>
+            <version>0.1.0</version>
+        </Kraus_Test>
+    </modules>
+    <frontend>
+        <routers>
+            <test>
+                <use>standard</use>
+                <args>
+                    <module>Kraus_Test</module>
+                    <frontName>test</frontName>
+                </args>
+            </test>
+        </routers>
+        <layout>
+            <updates>
+                <test>
+                    <file>test.xml</file>
+                </test>
+            </updates>
+        </layout>
+    </frontend>
+    <global>
+        <helpers>
+            <test>
+                <class>Kraus_Test_Helper</class>
+            </test>
+        </helpers>
+        <blocks>
+            <test>
+                <class>Kraus_Test_Block</class>
+            </test>
+        </blocks>
+        <models>
+            <test>
+                <class>Kraus_Test_Model</class>
+                <resourceModel>test_mysql4</resourceModel>	
+            </test>
             <test_mysql4>
                 <class>Kraus_Test_Model_Mysql4</class>
                 <entities>
@@ -45,7 +54,7 @@
                     <module>Kraus_Test</module>
                 </setup>
             </test_setup>
-<test_read>
+            <test_read>
                 <connection>
                     <use>core_read</use>
                 </connection>
@@ -58,15 +67,32 @@
             </test_write>
         </resources>  
   
-    <helpers>
-      <test>
-        <class>Kraus_Test_Helper</class>
-      </test>
-    </helpers>
-	<blocks>
-	  <test>
-		<class>Kraus_Test_Block</class>
-	  </test>
-	</blocks>
-  </global>
+    </global>
+
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <!-- This is how we load our Adminhtml controllers -->
+                    <modules>
+                        <Kraus_Test before="Mage_Adminhtml">Kraus_Test</Kraus_Test>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+
+    <adminhtml>
+        <menu>
+            <catalog>
+                <children>
+                    <kraustest translate="title" module="test">
+                        <title>Test</title>
+                        <action>adminhtml/adminhtml_test</action>                      
+                    </kraustest>
+                </children>
+            </catalog>
+        </menu>
+    </adminhtml>
+  
 </config> 

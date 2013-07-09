@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<config>
+    <menu>
+        <catalog>
+            <children>
+                <kraustest translate="title" module="test">
+                    <!-- This is how the menu text will be displayed -->
+                    <title>Test</title>
+                    <!-- This is the URL of what we want the menu item to link to -->
+                    <action>adminhtml/adminhtml_test</action>
+                </kraustest>
+            </children>
+        </catalog>
+    </menu>
+     
+    <acl>
+        <resources>
+            <all>
+                <title>Allow Everything</title>
+            </all>
+            <catalog>
+                <children>
+                    <!-- Keep the same naming convention as above -->
+                    <kraustest translate="title">
+                        <!-- This is how the ACL text will be displayed on System > Permissions > Roles > Role > Role Resources -->
+                        <title>Test</title>
+                    </kraustest>
+                </children>
+            </catalog>
+        </resources>
+    </acl>
+</config>

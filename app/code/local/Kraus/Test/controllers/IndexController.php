@@ -1,7 +1,9 @@
 <?php
 
-class Kraus_Test_IndexController extends Mage_Core_Controller_Front_Action{
-    public function IndexAction() {
+class Kraus_Test_IndexController extends Mage_Core_Controller_Front_Action
+{
+    public function IndexAction() 
+    {
       
 	  $this->loadLayout();   
 	  $this->getLayout()->getBlock("head")->setTitle($this->__("Page title"));
@@ -13,18 +15,19 @@ class Kraus_Test_IndexController extends Mage_Core_Controller_Front_Action{
 		   ));
 
       $breadcrumbs->addCrumb("page title", array(
-                "label" => $this->__("Page title"),
-                "title" => $this->__("Page title")
+                "label" => $this->__("Register Form"),
+                "title" => $this->__("Register Form")
 		   ));
 
       $this->renderLayout(); 
 	  
     }
 	
-	       public function postAction() {
+	   public function postAction() 
+           {
 				$model = Mage::getModel('test/test');
 			/*
-			$collection=				$model->getCollection();
+			$collection=$model->getCollection();
 			foreach ($collection as $item ) {
 			print_r($item->getData());
 			}*/
@@ -35,8 +38,8 @@ class Kraus_Test_IndexController extends Mage_Core_Controller_Front_Action{
 				$model->setEmail(trim($email));
 				$phone=$this->getRequest()->getParam('phone');
 				$model->setTelephone($phone);
-				$comment=$this->getRequest()->getParam('comment');
-				$model->setComments(trim($comment));
+				$Address=$this->getRequest()->getParam('Address');
+				$model->setAddress(trim($Address));
 				
 				$model->save();		
                 die("We are at post action");
