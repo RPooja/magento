@@ -45,6 +45,27 @@ class Kraus_Test_Block_Adminhtml_Test_Edit_Form extends Mage_Adminhtml_Block_Wid
             'title'     => Mage::helper('checkout')->__('Name'),
             'required'  => true,
         ));
+        
+         $fieldset->addField('email', 'text', array(
+            'name'      => 'email',
+            'label'     => Mage::helper('checkout')->__('Email'),
+            'title'     => Mage::helper('checkout')->__('Email'),
+            'required'  => true,
+        ));
+         
+         $fieldset->addField('telephone', 'text', array(
+            'name'      => 'telephone',
+            'label'     => Mage::helper('checkout')->__('Telephone'),
+            'title'     => Mage::helper('checkout')->__('Telephone'),
+            'required'  => true,
+        ));
+         
+         $fieldset->addField('address', 'text', array(
+            'name'      => 'address',
+            'label'     => Mage::helper('checkout')->__('Address'),
+            'title'     => Mage::helper('checkout')->__('Address'),
+            'required'  => true,
+        ));
      
         $form->setValues($model->getData());
         $form->setUseContainer(true);
